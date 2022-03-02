@@ -5,7 +5,7 @@ class Trade(Base):
 
     __tablename__ = 'trades'
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String)
     type = Column(String)
     ticker = Column(String)

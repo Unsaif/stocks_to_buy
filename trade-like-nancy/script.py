@@ -46,7 +46,10 @@ def script():
 
     stocks = []
     for key in trading_dataframes:
-        tickers_to_buy, tickers_to_sell = stocks_to_buy.alpaca_translation(trading_dataframes[key])
+        first_name = id_json[key][0]
+        new_doc_id = id_json[key][1]
+        name = f"{first_name} {key}"
+        tickers_to_buy, tickers_to_sell = stocks_to_buy.alpaca_translation(trading_dataframes[key], name, new_doc_id, todays_date)
         ticker_string = ", ".join(tickers_to_buy)
         if len(tickers_to_buy) != 0:
             print(f"{key} purchased: {ticker_string}\n")

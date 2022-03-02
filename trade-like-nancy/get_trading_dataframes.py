@@ -1,6 +1,5 @@
 from . import get_pdf_details 
 
-#import pandas 
 import requests
 import json
 
