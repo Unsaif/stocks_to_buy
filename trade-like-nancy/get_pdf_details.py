@@ -3,7 +3,7 @@ import fitz
 import re
 
 def getpdfdetails(file_path):
-    columns = ["Ticker", "Type", "Description"] #"Stock", 
+    columns = ["Ticker", "Type", "Description"] 
     df = pd.DataFrame(columns = columns)
     rows = []
     with open(file_path, 'rb') as f: 
