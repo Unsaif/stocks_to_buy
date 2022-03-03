@@ -8,3 +8,9 @@ class Trade(BaseModel):
     ticker: str
     date: datetime.date
     doc_id: str
+
+class People(BaseModel):
+    id: int
+    last_name: str
+    first_name: str
+    last_doc_id: str
