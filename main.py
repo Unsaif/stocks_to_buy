@@ -1,8 +1,8 @@
 from fastapi import FastAPI, Depends
-from . import script
-from .database import SessionLocal, engine
+from lib import script
+from lib.database import SessionLocal, engine
 from sqlalchemy.orm import Session
-from . import crud, models, schemas
+from lib import crud, models, schemas
 
 app = FastAPI()
 
@@ -17,8 +17,8 @@ def get_db():
 
 @app.get("/stocks_to_buy")
 async def stocks_to_buy():
-    stocks = script.script()
-    return stocks
+    stonks = script.script()
+    return stonks
 
 @app.post('/trade')
 async def create(request: schemas.Trade, db: Session = Depends(get_db)):
@@ -28,7 +28,7 @@ async def create(request: schemas.Trade, db: Session = Depends(get_db)):
     db.refresh(trade)
     return trade
 
-@app.get("/trades")
+@app.get("/trades") #TODO get specific trades
 async def read_trades(db: Session = Depends(get_db)):
     trades = crud.get_trades(db)
     return trades
@@ -40,4 +40,6 @@ async def create(request: schemas.People, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(person)
     return person
+
+#TODO update person
 
